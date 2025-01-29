@@ -11,6 +11,9 @@ let sw2 = false
 
 let broken = false
 
+// a linh a baixo cria uma variavel que identifica uma página no html
+let path = window.location.pathname
+//alert(path) //apoio ao entendimento da lógica
 
 function sw(recive) {
     //  console.log(recive) //apoio a logica
@@ -46,16 +49,35 @@ function sw(recive) {
     }
 
     // logica para o operador  AMd
-    if (broken !== true){
-    if (sw1 === true && sw2 === true) {
-        document.getElementById('lamp').src = "img/on.jpg"
-    }
-    else {
-        document.getElementById('lamp').src = "img/off.jpg"
-    }
+    if (path === "/and.html" && broken !== true) {
+        if (sw1 === true && sw2 === true) {
+            document.getElementById('lamp').src = "img/on.jpg"
+        }
+        else {
+            document.getElementById('lamp').src = "img/off.jpg"
+        }
     }
 
+    // logica para o operador  OR
+    if (path === "/or.html" && broken !== true) {
+        if (sw1 === true || sw2 === true) {
+            document.getElementById('lamp').src = "img/on.jpg"
+        }
+        else {
+            document.getElementById('lamp').src = "img/off.jpg"
+        }
+    }
 
+    // logica para o operador  NOT
+    if (path === "/not.html" && broken !== true) {
+        if (!sw1) {
+            document.getElementById('lamp').src = "img/on.jpg"
+        }
+        else {
+            document.getElementById('lamp').src = "img/off.jpg"
+        }
+    }
 
 
 }
+
